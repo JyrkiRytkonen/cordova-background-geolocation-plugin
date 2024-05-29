@@ -1,6 +1,10 @@
 {
   "name": "cordova-background-geolocation-plugin",
+<<<<<<< HEAD
   "version": "2.3.3",
+=======
+  "version": "2.2.2",
+>>>>>>> 228eb8d (Bump version to 2.2.2)
   "description": "Cordova Background Geolocation Plugin",
   "main": "./www/BackgroundGeolocation.js",
   "types": "./www/BackgroundGeolocation.d.ts",
