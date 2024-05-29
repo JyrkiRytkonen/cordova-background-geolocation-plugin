@@ -14,6 +14,8 @@ import com.marianhello.bgloc.data.sqlite.SQLiteLocationContract.LocationEntry;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.marianhello.utils.Convert;
+
 public class BackgroundLocation implements Parcelable {
     public static final int DELETED = 0;
     public static final int POST_PENDING = 1;
@@ -880,33 +882,6 @@ public class BackgroundLocation implements Parcelable {
         return s.toString();
     }
 
-
-    /**
-	 * Convert location.extras bundle to json object: https://stackoverflow.com/a/69392840
-     * @param location extras Bundle to convert
-     * Returns location.extras Bundle as JSON object.
-     * @throws JSONException
-     */
-    public JSONObject convertBundleToJson(Bundle bundle) {
-        JSONObject json = new JSONObject();
-        Set<String> keys = bundle.keySet();
-
-        for (String key : keys) {
-            try {
-                if (bundle.get(key) != null && bundle.get(key).getClass().getName().equals("android.os.Bundle")) {
-                    Bundle nestedBundle = (Bundle) bundle.get(key);
-                    json.put(key, convertToJson(nestedBundle));
-                } else {
-                    json.put(key, JSONObject.wrap(bundle.get(key)));
-                }
-            } catch(JSONException e) {
-                System.out.println(e.toString());
-            }
-        }
-
-        return json;
-    }
-
     /**
      * Returns location as JSON object.
      * @throws JSONException
@@ -929,7 +904,7 @@ public class BackgroundLocation implements Parcelable {
         if (hasMockLocationsEnabled()) json.put("mockLocationsEnabled", areMockLocationsEnabled());
 
         //ADD extras bundle to json here!
-        json.put("extras", convertBundleToJson(extras));
+        json.put("extras", Convert.convertBundleToJson(extras));
 
         return json;
   	}
