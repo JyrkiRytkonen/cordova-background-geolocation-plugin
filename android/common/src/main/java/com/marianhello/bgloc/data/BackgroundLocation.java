@@ -881,7 +881,7 @@ public class BackgroundLocation implements Parcelable {
 
         return s.toString();
     }
-
+    
     /**
      * Returns location as JSON object.
      * @throws JSONException
