@@ -880,6 +880,33 @@ public class BackgroundLocation implements Parcelable {
         return s.toString();
     }
 
+
+    /**
+	 * Convert location.extras bundle to json object: https://stackoverflow.com/a/69392840
+     * @param location extras Bundle to convert
+     * Returns location.extras Bundle as JSON object.
+     * @throws JSONException
+     */
+    public JSONObject convertBundleToJson(Bundle bundle) {
+        JSONObject json = new JSONObject();
+        Set<String> keys = bundle.keySet();
+
+        for (String key : keys) {
+            try {
+                if (bundle.get(key) != null && bundle.get(key).getClass().getName().equals("android.os.Bundle")) {
+                    Bundle nestedBundle = (Bundle) bundle.get(key);
+                    json.put(key, convertToJson(nestedBundle));
+                } else {
+                    json.put(key, JSONObject.wrap(bundle.get(key)));
+                }
+            } catch(JSONException e) {
+                System.out.println(e.toString());
+            }
+        }
+
+        return json;
+    }
+
     /**
      * Returns location as JSON object.
      * @throws JSONException
@@ -891,6 +918,7 @@ public class BackgroundLocation implements Parcelable {
         json.put("time", time);
         json.put("latitude", latitude);
         json.put("longitude", longitude);
+
         if (hasAccuracy) json.put("accuracy", accuracy);
         if (hasVerticalAccuracy) json.put("altitudeAccuracy", verticalAccuracy);
         if (hasSpeed) json.put("speed", speed);
@@ -899,6 +927,9 @@ public class BackgroundLocation implements Parcelable {
         if (hasRadius) json.put("radius", radius);
         if (hasIsFromMockProvider()) json.put("isFromMockProvider", isFromMockProvider());
         if (hasMockLocationsEnabled()) json.put("mockLocationsEnabled", areMockLocationsEnabled());
+
+        //ADD extras bundle to json here!
+        json.put("extras", convertBundleToJson(extras));
 
         return json;
   	}
