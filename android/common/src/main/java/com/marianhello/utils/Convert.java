@@ -67,7 +67,7 @@ public class Convert {
      */
     public static JSONObject convertBundleToJson(Bundle bundle) {
         JSONObject json = new JSONObject();
-        if (bundle != null && bundle) {
+        if (bundle != null) {
             Set<String> keys = bundle.keySet();
 
             for (String key : keys) {
