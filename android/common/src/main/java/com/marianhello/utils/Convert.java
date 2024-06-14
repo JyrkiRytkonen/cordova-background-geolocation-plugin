@@ -67,19 +67,21 @@ public class Convert {
      */
     public static JSONObject convertBundleToJson(Bundle bundle) {
         JSONObject json = new JSONObject();
-        Set<String> keys = bundle.keySet();
+        if (bundle != null && bundle) {
+            Set<String> keys = bundle.keySet();
 
-        for (String key : keys) {
-            try {
-                if (bundle.get(key) != null && bundle.get(key).getClass().getName().equals("android.os.Bundle")) {
-                    Bundle nestedBundle = (Bundle) bundle.get(key);
-                    json.put(key, convertBundleToJson(nestedBundle));
-                } else {
-                    json.put(key, JSONObject.wrap(bundle.get(key)));
+            for (String key : keys) {
+                try {
+                    if (bundle.get(key) != null && bundle.get(key).getClass().getName().equals("android.os.Bundle")) {
+                        Bundle nestedBundle = (Bundle) bundle.get(key);
+                        json.put(key, convertBundleToJson(nestedBundle));
+                    } else {
+                        json.put(key, JSONObject.wrap(bundle.get(key)));
+                    }
+                } catch (JSONException e) {
+                    System.out.println(e.toString());
                 }
-            } catch (JSONException e) {
-                System.out.println(e.toString());
-            }
+            }    
         }
 
         return json;
