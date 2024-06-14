@@ -14,6 +14,8 @@ import com.marianhello.bgloc.data.sqlite.SQLiteLocationContract.LocationEntry;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.marianhello.utils.Convert;
+
 public class BackgroundLocation implements Parcelable {
     public static final int DELETED = 0;
     public static final int POST_PENDING = 1;
@@ -879,7 +881,7 @@ public class BackgroundLocation implements Parcelable {
 
         return s.toString();
     }
-
+    
     /**
      * Returns location as JSON object.
      * @throws JSONException
@@ -891,6 +893,7 @@ public class BackgroundLocation implements Parcelable {
         json.put("time", time);
         json.put("latitude", latitude);
         json.put("longitude", longitude);
+
         if (hasAccuracy) json.put("accuracy", accuracy);
         if (hasVerticalAccuracy) json.put("altitudeAccuracy", verticalAccuracy);
         if (hasSpeed) json.put("speed", speed);
@@ -899,6 +902,9 @@ public class BackgroundLocation implements Parcelable {
         if (hasRadius) json.put("radius", radius);
         if (hasIsFromMockProvider()) json.put("isFromMockProvider", isFromMockProvider());
         if (hasMockLocationsEnabled()) json.put("mockLocationsEnabled", areMockLocationsEnabled());
+
+        //ADD extras bundle to json here!
+        json.put("extras", Convert.convertBundleToJson(extras));
 
         return json;
   	}
