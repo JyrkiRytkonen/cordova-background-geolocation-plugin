@@ -3,7 +3,11 @@ name: changelog-generator
 on:
   push:
     branches: [stable]
-
+  workflow_run:
+    workflows: ["Publish Release"]
+    types: 
+      - completed
+  workflow_dispatch:
 jobs:
   generate_changelog:
 
@@ -23,7 +27,7 @@ jobs:
         unreleased: true
         author: true
         addSections: '{"documentation":{"prefix":"**Documentation:**","labels":["documentation"]}}'
-    - uses: stefanzweifel/git-auto-commit-action@v4
+    - uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Update Changelog
         file_pattern: CHANGELOG.md

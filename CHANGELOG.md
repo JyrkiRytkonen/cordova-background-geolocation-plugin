@@ -1,8 +1,60 @@
 # Changelog
 
-## [Unreleased](https://github.com/HaylLtd/cordova-background-geolocation-plugin/tree/HEAD)
+## [v2.3.3](https://github.com/HaylLtd/cordova-background-geolocation-plugin/tree/v2.3.3) (2025-05-12)
 
-[Full Changelog](https://github.com/HaylLtd/cordova-background-geolocation-plugin/compare/v2.1.1...HEAD)
+[Full Changelog](https://github.com/HaylLtd/cordova-background-geolocation-plugin/compare/v2.3.2...v2.3.3)
+
+**Closed issues:**
+
+- How to check if notifications permission was granted? [\#193](https://github.com/HaylLtd/cordova-background-geolocation-plugin/issues/193)
+- permission issue on android X [\#170](https://github.com/HaylLtd/cordova-background-geolocation-plugin/issues/170)
+- error: resource string/plugin\_bgloc\_content\_authority not found [\#156](https://github.com/HaylLtd/cordova-background-geolocation-plugin/issues/156)
+- on\('authorization'\) event always return 1 [\#154](https://github.com/HaylLtd/cordova-background-geolocation-plugin/issues/154)
+- Problems to get to work on Ios [\#151](https://github.com/HaylLtd/cordova-background-geolocation-plugin/issues/151)
+- Events won't fire after terminating and restarting the app [\#146](https://github.com/HaylLtd/cordova-background-geolocation-plugin/issues/146)
+- Cannot get locations when in background [\#126](https://github.com/HaylLtd/cordova-background-geolocation-plugin/issues/126)
+
+**Merged pull requests:**
+
+- Move permission check inside the grand permission callback [\#208](https://github.com/HaylLtd/cordova-background-geolocation-plugin/pull/208) ([HarelM](https://github.com/HarelM))
+
+## [v2.3.2](https://github.com/HaylLtd/cordova-background-geolocation-plugin/tree/v2.3.2) (2025-03-24)
+
+[Full Changelog](https://github.com/HaylLtd/cordova-background-geolocation-plugin/compare/v2.3.1...v2.3.2)
+
+**Merged pull requests:**
+
+- Update show app settings for IOS 18 support [\#207](https://github.com/HaylLtd/cordova-background-geolocation-plugin/pull/207) ([AbdullahSohail-SE](https://github.com/AbdullahSohail-SE))
+- Update Java to 21 [\#204](https://github.com/HaylLtd/cordova-background-geolocation-plugin/pull/204) ([HarelM](https://github.com/HarelM))
+
+## [v2.3.1](https://github.com/HaylLtd/cordova-background-geolocation-plugin/tree/v2.3.1) (2024-08-03)
+
+[Full Changelog](https://github.com/HaylLtd/cordova-background-geolocation-plugin/compare/v2.3.0...v2.3.1)
+
+**Merged pull requests:**
+
+- Check for activityRecognitionPermitted in ActivityRecognitionLocationProvider [\#198](https://github.com/HaylLtd/cordova-background-geolocation-plugin/pull/198) ([pmlodawski](https://github.com/pmlodawski))
+- Use newer ACTIVITY\_RECOGNITION permission [\#197](https://github.com/HaylLtd/cordova-background-geolocation-plugin/pull/197) ([pmlodawski](https://github.com/pmlodawski))
+
+## [v2.3.0](https://github.com/HaylLtd/cordova-background-geolocation-plugin/tree/v2.3.0) (2024-07-03)
+
+[Full Changelog](https://github.com/HaylLtd/cordova-background-geolocation-plugin/compare/v2.2.1...v2.3.0)
+
+**Merged pull requests:**
+
+- Upgrade google play service version to 17+ [\#194](https://github.com/HaylLtd/cordova-background-geolocation-plugin/pull/194) ([HarelM](https://github.com/HarelM))
+
+## [v2.2.1](https://github.com/HaylLtd/cordova-background-geolocation-plugin/tree/v2.2.1) (2024-05-29)
+
+[Full Changelog](https://github.com/HaylLtd/cordova-background-geolocation-plugin/compare/v2.2.0...v2.2.1)
+
+**Merged pull requests:**
+
+- Added FOREGROUND\_SERVICE\_LOCATION permission [\#190](https://github.com/HaylLtd/cordova-background-geolocation-plugin/pull/190) ([HarelM](https://github.com/HarelM))
+
+## [v2.2.0](https://github.com/HaylLtd/cordova-background-geolocation-plugin/tree/v2.2.0) (2024-05-28)
+
+[Full Changelog](https://github.com/HaylLtd/cordova-background-geolocation-plugin/compare/v2.1.1...v2.2.0)
 
 **Merged pull requests:**
 

@@ -5,10 +5,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.location.Location;
+import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
+import androidx.core.app.ActivityCompat;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -147,13 +150,17 @@ public class ActivityRecognitionLocationProvider extends AbstractLocationProvide
         }
     }
 
+    private boolean activityRecognitionPermitted() {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.Q || ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_GRANTED;
+    }
+
     private void attachRecorder() {
         if (googleApiClient == null) {
             connectToPlayAPI();
         } else if (googleApiClient.isConnected()) {
             if (isWatchingActivity) { return; }
             startTracking();
-            if (mConfig.getStopOnStillActivity()) {
+            if (mConfig.getStopOnStillActivity() && activityRecognitionPermitted()) {
                 ActivityRecognition.ActivityRecognitionApi.requestActivityUpdates(
                         googleApiClient,
                         mConfig.getActivitiesInterval(),

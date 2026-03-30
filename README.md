@@ -29,6 +29,11 @@ The NPM package can be found at [cordova-background-geolocation-plugin](https://
 
 **Note:** this plugin can be installed on a Capacitor project and it is tested to be working as expected, some configuration may need to be done differently than below according to how Capacitor configuration is implemented.
 
+**Note:** for Android 14+ there's a need to let Google know why the app needs to use the location and have a video link when uploading for the first time to play console. It takes some time to approve and after that there's no need to do it again. This is related to `FOREGROUND_SERVICE_LOCATION` premission.
+
+**Note:** for Android 13+ there's a need for runtime `POST_NOTIFICATION` permission request in order to show the icon.
+
+
 ```bash
 npm install cordova-background-geolocation-plugin
 npx cap sync
@@ -44,7 +49,7 @@ You may also want to change default iOS permission prompts and set specific goog
 
 ```bash
 cordova plugin add cordova-background-geolocation-plugin \
-  --variable GOOGLE_PLAY_SERVICES_VERSION=11+ \
+  --variable GOOGLE_PLAY_SERVICES_VERSION=17+ \
   --variable ALWAYS_USAGE_DESCRIPTION="App requires ..." \
   --variable MOTION_USAGE_DESCRIPTION="App requires motion detection"
 ```
